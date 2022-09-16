@@ -105,7 +105,7 @@
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QLineEdit" name="nomeLineEdit">
+            <widget class="QLineEdit" name="InputName">
              <property name="maximumSize">
               <size>
                <width>450</width>
@@ -128,12 +128,12 @@
               </font>
              </property>
              <property name="text">
-              <string>Descrição</string>
+              <string>Ocupação</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QLineEdit" name="descriOLineEdit">
+            <widget class="QLineEdit" name="InputOccupation">
              <property name="maximumSize">
               <size>
                <width>450</width>
@@ -156,12 +156,12 @@
               </font>
              </property>
              <property name="text">
-              <string>Valor</string>
+              <string>Salário</string>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QLineEdit" name="valorLineEdit">
+            <widget class="QLineEdit" name="InputRemuneration">
              <property name="maximumSize">
               <size>
                <width>450</width>
@@ -189,7 +189,7 @@
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QComboBox" name="statusComboBox">
+            <widget class="QComboBox" name="InputStatus">
              <property name="maximumSize">
               <size>
                <width>450</width>
@@ -218,7 +218,7 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_2">
            <item>
-            <widget class="QPushButton" name="pushButton_3">
+            <widget class="QPushButton" name="BtnSave">
              <property name="font">
               <font>
                <family>Arial</family>
@@ -231,7 +231,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_4">
+            <widget class="QPushButton" name="BtnEdit">
              <property name="font">
               <font>
                <family>Arial</family>
@@ -244,7 +244,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QPushButton" name="BtnDelete">
              <property name="font">
               <font>
                <family>Arial</family>
@@ -262,7 +262,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QTableWidget" name="tableWidget">
+       <widget class="QTableWidget" name="Table">
         <column>
          <property name="text">
           <string>Id</string>
@@ -275,12 +275,12 @@
         </column>
         <column>
          <property name="text">
-          <string>Descrição</string>
+          <string>Ocupação</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>Valor</string>
+          <string>Salário</string>
          </property>
         </column>
         <column>

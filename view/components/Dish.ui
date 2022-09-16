@@ -128,12 +128,12 @@
               </font>
              </property>
              <property name="text">
-              <string>Ocupação</string>
+              <string>Descrição</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QLineEdit" name="InputOccupation">
+            <widget class="QLineEdit" name="InputDescription">
              <property name="maximumSize">
               <size>
                <width>450</width>
@@ -156,12 +156,12 @@
               </font>
              </property>
              <property name="text">
-              <string>Salário</string>
+              <string>Valor</string>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QLineEdit" name="InputRemuneration">
+            <widget class="QLineEdit" name="InputPrice">
              <property name="maximumSize">
               <size>
                <width>450</width>
@@ -218,7 +218,7 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_2">
            <item>
-            <widget class="QPushButton" name="BtnSave">
+            <widget class="QPushButton" name="BtnAdd">
              <property name="font">
               <font>
                <family>Arial</family>
@@ -262,7 +262,41 @@
        </widget>
       </item>
       <item>
-       <widget class="QTableWidget" name="Talbe">
+       <widget class="QLabel" name="AlertDish">
+        <property name="font">
+         <font>
+          <family>Arial Black</family>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTableWidget" name="Table">
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="tabKeyNavigation">
+         <bool>false</bool>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="showGrid">
+         <bool>false</bool>
+        </property>
+        <property name="gridStyle">
+         <enum>Qt::DashLine</enum>
+        </property>
         <column>
          <property name="text">
           <string>Id</string>
@@ -275,22 +309,17 @@
         </column>
         <column>
          <property name="text">
-          <string>Ocupação</string>
+          <string>Descrição</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>Salário</string>
+          <string>Valor</string>
          </property>
         </column>
         <column>
          <property name="text">
           <string>Status</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Criado</string>
          </property>
         </column>
        </widget>

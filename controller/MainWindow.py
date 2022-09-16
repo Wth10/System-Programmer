@@ -1,10 +1,12 @@
 from PyQt6.QtWidgets import QMainWindow
 from PyQt6 import uic
 
-from controller.ControllerLayout.Login import Login
-from controller.ControllerLayout.Registration import Cadastro
+from controller.ControllerComponents.Menu import Menu
+from controller.ControllerComponents.Employees import Employees
+from controller.ControllerComponents.Profile import Profile
+from controller.ControllerComponents.Dish import Dish
 
-File_Qt = "view/Home.ui"
+File_Qt = "view/Dashboard.ui"
 
 
 class MainWindow(QMainWindow):
@@ -16,23 +18,35 @@ class MainWindow(QMainWindow):
         self.showMaximized()
 
         # Cria os objetos das páginas
-        self.PagLogin = Login()
-        self.PagCadastro = Cadastro()
+        self.PageMenu = Menu()
+        self.PageEmployees = Employees()
+        self.PageProfile = Profile()
+        self.PageDish = Dish()
 
         # Insere as páginas
-        self.StackedWidget.addWidget(self.PagLogin)
-        self.StackedWidget.addWidget(self.PagCadastro)
+        self.StackedWidget.addWidget(self.PageMenu)
+        self.StackedWidget.addWidget(self.PageEmployees)
+        self.StackedWidget.addWidget(self.PageProfile)
+        self.StackedWidget.addWidget(self.PageDish)
 
         # Ações dos botões
-        self.BtnLogin.clicked.connect(self.ActionMenu)
-        self.BtnCadastro.clicked.connect(self.ActionMenu)
+        self.BtnMenu.clicked.connect(self.ActionMenu)
+        self.BtnEmployees.clicked.connect(self.ActionMenu)
+        self.BtnProfile.clicked.connect(self.ActionMenu)
+        self.BtnDish.clicked.connect(self.ActionMenu)
 
     def ActionMenu(self):
         Button = self.sender()
         ClickedButton = Button.objectName()
 
-        if ClickedButton == "BtnLogin":
+        if ClickedButton == "BtnMenu":
             self.StackedWidget.setCurrentIndex(0)
 
-        if ClickedButton == "BtnCadastro":
+        if ClickedButton == "BtnEmployees":
             self.StackedWidget.setCurrentIndex(1)
+
+        if ClickedButton == "BtnProfile":
+            self.StackedWidget.setCurrentIndex(2)
+
+        if ClickedButton == "BtnDish":
+            self.StackedWidget.setCurrentIndex(3)

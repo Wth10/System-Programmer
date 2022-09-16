@@ -1,5 +1,6 @@
 from PyQt6.QtWidgets import QWidget
 from PyQt6 import uic
+import Dashboard
 
 File_Qt = "view/layout/Login.ui"
 
