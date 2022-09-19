@@ -4,7 +4,7 @@ from PyQt6 import uic
 File_Qt = "view/components/Profile.ui"
 
 
-class Profile(QWidget):
+class ProfileControl(QWidget):
     def __init__(self) -> None:
-        super(Profile, self).__init__()
+        super(ProfileControl, self).__init__()
         uic.loadUi(File_Qt, self)

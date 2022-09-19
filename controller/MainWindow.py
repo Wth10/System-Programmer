@@ -1,10 +1,10 @@
 from PyQt6.QtWidgets import QMainWindow
 from PyQt6 import uic
 
-from controller.ControllerComponents.Menu import Menu
-from controller.ControllerComponents.Employees import Employees
-from controller.ControllerComponents.Profile import Profile
-from controller.ControllerComponents.Dish import Dish
+from controller.ControllerComponents.MenuControl import MenuControl
+from controller.ControllerComponents.EmployeeControl import EmployeeControl
+from controller.ControllerComponents.ProfileControl import ProfileControl
+from controller.ControllerComponents.PlateControl import PlateControl
 
 File_Qt = "view/Dashboard.ui"
 
@@ -18,16 +18,16 @@ class MainWindow(QMainWindow):
         self.showMaximized()
 
         # Cria os objetos das páginas
-        self.PageMenu = Menu()
-        self.PageEmployees = Employees()
-        self.PageProfile = Profile()
-        self.PageDish = Dish()
+        self.PageMenuControl = MenuControl()
+        self.PageEmployeeControl = EmployeeControl()
+        self.PageProfileControl = ProfileControl()
+        self.PagePlateControl = PlateControl()
 
         # Insere as páginas
-        self.StackedWidget.addWidget(self.PageMenu)
-        self.StackedWidget.addWidget(self.PageEmployees)
-        self.StackedWidget.addWidget(self.PageProfile)
-        self.StackedWidget.addWidget(self.PageDish)
+        self.StackedWidget.addWidget(self.PageMenuControl)
+        self.StackedWidget.addWidget(self.PageEmployeeControl)
+        self.StackedWidget.addWidget(self.PageProfileControl)
+        self.StackedWidget.addWidget(self.PagePlateControl)
 
         # Ações dos botões
         self.BtnMenu.clicked.connect(self.ActionMenu)
@@ -41,6 +41,7 @@ class MainWindow(QMainWindow):
 
         if ClickedButton == "BtnMenu":
             self.StackedWidget.setCurrentIndex(0)
+            self.PageMenuControl.Alert()
 
         if ClickedButton == "BtnEmployees":
             self.StackedWidget.setCurrentIndex(1)

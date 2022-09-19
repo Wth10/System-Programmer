@@ -7,7 +7,7 @@ class Dish_DAO:
         connect = DB()
         cursor = connect.cursor()
 
-        SQL = "INSERT INTO Dish(Name, Description, Price, Status) VALUES (?,?,?,?);"
+        SQL = "INSERT INTO Dish(Name, Description, Price, Status) VALUES (?, ?, ?, ?);"
         Dados = [w.Name, w.Description, w.Price, w.Status]
         cursor.execute(SQL, Dados)
         return_Id = cursor.execute("SELECT last_insert_rowid();")
@@ -18,12 +18,33 @@ class Dish_DAO:
 
         return Id
 
+    def EditDAO(w: Dish, Id: int):
+        connect = DB()
+        cursor = connect.cursor()
+
+        SQL = "UPDATE Dish SET Name=?, Description=?, Price=?, Status=? WHERE Id=?"
+        Dados = [w.Name, w.Description, w.Price, w.Status, Id]
+
+        cursor.execute(SQL, Dados)
+        connect.commit()
+        connect.close()
+
+    def DeleteDAO(Id: int):
+        connect = DB()
+        cursor = connect.cursor()
+
+        SQL = "DELETE FROM Dish WHERE Id = ?;"
+        cursor.execute(SQL, [Id])
+
+        connect.commit()
+        connect.close()
+
     def SelectAll() -> list:
         Dish_List = []
 
         connect = DB()
         cursor = connect.cursor()
-        SQL = "SELECT * FROM Dish;"
+        SQL = "SELECT * FROM Dish ORDER BY Status ASC;"
         cursor.execute(SQL)
 
         list = cursor.fetchall()
