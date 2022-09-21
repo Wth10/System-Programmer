@@ -41,7 +41,6 @@ class MainWindow(QMainWindow):
 
         if ClickedButton == "BtnMenu":
             self.StackedWidget.setCurrentIndex(0)
-            self.PageMenuControl.Alert()
 
         if ClickedButton == "BtnEmployees":
             self.StackedWidget.setCurrentIndex(1)

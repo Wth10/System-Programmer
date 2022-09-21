@@ -18,7 +18,6 @@ class MenuControl(QWidget):
         )
 
         self.LoadData()
-        self.Alert()
 
     def LoadData(self):
         list = Menu_DAO.SpecificSelection()
@@ -30,8 +29,6 @@ class MenuControl(QWidget):
 
         if PlateCount == 0:
             self.AlertMenu.setText(f"Nenhum Prato Cadastrado!!")
-        else:
-            None
 
     def AddTableWidget(self, w: Menu):
         Line = self.Table.rowCount()

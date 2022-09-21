@@ -76,19 +76,7 @@
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <layout class="QFormLayout" name="formLayout">
            <item row="0" column="0">
@@ -148,7 +136,7 @@
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QLabel" name="valorLabel">
+            <widget class="QLabel" name="salarioLabel">
              <property name="font">
               <font>
                <family>Arial</family>
@@ -161,17 +149,14 @@
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QLineEdit" name="InputRemuneration">
-             <property name="maximumSize">
-              <size>
-               <width>450</width>
-               <height>16777215</height>
-              </size>
-             </property>
+            <widget class="QDoubleSpinBox" name="InputRemuneration">
              <property name="font">
               <font>
                <family>Arial</family>
               </font>
+             </property>
+             <property name="maximum">
+              <double>9999.989999999999782</double>
              </property>
             </widget>
            </item>
@@ -216,9 +201,40 @@
           </layout>
          </item>
          <item>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <widget class="QPushButton" name="BtnGetData">
+             <property name="text">
+              <string>Pegar Dados</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="BtnClean">
+             <property name="text">
+              <string>Limpar Dados</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
           <layout class="QVBoxLayout" name="verticalLayout_2">
            <item>
-            <widget class="QPushButton" name="BtnSave">
+            <widget class="QPushButton" name="BtnAdd">
              <property name="font">
               <font>
                <family>Arial</family>
@@ -262,7 +278,41 @@
        </widget>
       </item>
       <item>
+       <widget class="QLabel" name="Alert">
+        <property name="font">
+         <font>
+          <family>Arial Black</family>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QTableWidget" name="Table">
+        <property name="editTriggers">
+         <set>QAbstractItemView::SelectedClicked</set>
+        </property>
+        <property name="tabKeyNavigation">
+         <bool>false</bool>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="textElideMode">
+         <enum>Qt::ElideRight</enum>
+        </property>
+        <property name="showGrid">
+         <bool>false</bool>
+        </property>
+        <property name="gridStyle">
+         <enum>Qt::DashLine</enum>
+        </property>
         <column>
          <property name="text">
           <string>Id</string>

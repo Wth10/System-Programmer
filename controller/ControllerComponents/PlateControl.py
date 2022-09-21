@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget, QHeaderView, QTableWidgetItem
+from PyQt6.QtWidgets import QWidget, QHeaderView, QTableWidgetItem, QMessageBox
 from PyQt6 import uic
 
 from model.Dish.Dish import Dish
@@ -18,9 +18,14 @@ class PlateControl(QWidget):
         )
 
         self.LoadData()
-        self.Table.cellClicked.connect(self.GetText)
+        # self.Table.cellClicked.connect(self.GetText)
+
         self.BtnAdd.clicked.connect(self.RegisterDish)
+        self.BtnEdit.clicked.connect(self.EditDish)
         self.BtnDelete.clicked.connect(self.DeleteDish)
+
+        self.BtnGetData.clicked.connect(self.GetText)
+        self.BtnClean.clicked.connect(self.ClearField)
 
     def LoadData(self):
         list = Dish_DAO.SelectAll()
@@ -30,8 +35,21 @@ class PlateControl(QWidget):
     def ClearField(self):
         self.InputName.clear()
         self.InputDescription.clear()
-        self.InputPrice.clear()
-        self.AlertDish.clear()
+        self.Alert.clear()
+
+    def GetText(self):
+        Line = self.Table.currentRow()
+
+        if Line == -1:
+            Alert = QMessageBox()
+            Alert.setIcon(QMessageBox.Icon.Information)
+            Alert.setWindowTitle("Alerta")
+            Alert.setText("SELECIONE UMA LINHA NA TABELA PARA PEGAR OS DADOS!!")
+            Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+            x = Alert.exec()
+        else:
+            self.InputName.setText(self.Table.item(Line, 1).text())
+            self.InputDescription.setText(self.Table.item(Line, 2).text())
 
     def RegisterDish(self):
         Name = self.InputName.text()
@@ -40,7 +58,7 @@ class PlateControl(QWidget):
         Status = self.InputStatus.currentText()
 
         if Name == "" or Description == "" or Price == "" or Status == "":
-            self.AlertDish.setText(f"Preencha Todos Os Campos")
+            self.AlertDish.setText(f"OBS: Preencha Todos Os Campos")
         else:
             New = Dish(-1, Name, Description, Price, Status)
             Id = Dish_DAO.AddDAO(New)
@@ -50,28 +68,61 @@ class PlateControl(QWidget):
     def DeleteDish(self):
         Line = self.Table.currentRow()
 
-        LineId = self.Table.item(Line, 0)
-        Id = LineId.text()
-        self.Table.removeRow(Line)
-
-        Dish_DAO.DeleteDAO(int(Id))
-
-    def EditExpenses(self):
-        Line = self.Table.currentRow()
-        LineId = self.Table.item(Line, 0)
-        Id = LineId.text()
-
-        Name = self.InputName.text()
-        Description = self.InputDescription.text()
-        Price = self.InputPrice.text()
-        Status = self.InputStatus.currentText()
-
-        if Name == "" or Description == "" or Price == "" or Status == "":
-            self.AlertErro.setText(f"Preencha Todos Os Campos")
+        if Line == -1:
+            Alert = QMessageBox()
+            Alert.setIcon(QMessageBox.Icon.Warning)
+            Alert.setWindowTitle("Alerta")
+            Alert.setText("SELECIONE UMA LINHA NA TABELA!!")
+            Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+            x = Alert.exec()
         else:
-            Update = Dish(-1, Name, Description, Price, Status)
-            self.Edition(Update)
-            Dish_DAO.EditDAO(Update, int(Id))
+            LineId = self.Table.item(Line, 0)
+            Id = LineId.text()
+
+            Alert = QMessageBox()
+            Alert.setIcon(QMessageBox.Icon.Warning)
+            Alert.setWindowTitle("Alerta")
+            Alert.setText(
+                f"TEM CERTEZA QUE QUER APAGAR ESSE PRATO DO CARDÁPIO? CUJO Id {Id}"
+            )
+            Alert.setStandardButtons(
+                QMessageBox.StandardButton.Ok | QMessageBox.StandardButton.Cancel
+            )
+            x = Alert.exec()
+
+            if x == 1024:
+                Line = self.Table.currentRow()
+                LineId = self.Table.item(Line, 0)
+                Id = LineId.text()
+                self.Table.removeRow(Line)
+                Dish_DAO.DeleteDAO(int(Id))
+            if x == 4194304:
+                x = Alert.close()
+
+    def EditDish(self):
+        Line = self.Table.currentRow()
+
+        if Line == -1:
+            Alert = QMessageBox()
+            Alert.setIcon(QMessageBox.Icon.Information)
+            Alert.setWindowTitle("Alerta")
+            Alert.setText("SELECIONE UMA LINHA NA TABELA!!")
+            Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+            x = Alert.exec()
+        else:
+            Name = self.InputName.text()
+            Description = self.InputDescription.text()
+            Price = self.InputPrice.text()
+            Status = self.InputStatus.currentText()
+
+            if Name == "" or Description == "" or Price == "" or Status == "":
+                self.Alert.setText(f"Preencha Todos Os Campos")
+            else:
+                LineId = self.Table.item(Line, 0)
+                Id = LineId.text()
+                Update = Dish(-1, Name, Description, Price, Status)
+                self.Edition(Update)
+                Dish_DAO.EditDAO(Update, int(Id))
 
     def Edition(self, w: Dish):
         Line = self.Table.currentRow()
@@ -90,12 +141,6 @@ class PlateControl(QWidget):
         self.Table.setItem(Line, 2, Description)
         self.Table.setItem(Line, 3, Price)
         self.Table.setItem(Line, 4, Status)
-
-    def GetText(self):
-        Line = self.Table.currentRow()
-
-        self.InputName.setText(self.Table.item(Line, 1).text())
-        self.InputDescription.setText(self.Table.item(Line, 2).text())
 
     def AddTableWidget(self, w: Dish):
         Line = self.Table.rowCount()
