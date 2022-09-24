@@ -13,21 +13,50 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="Menu">
+   <property name="styleSheet">
+    <string notr="true">#Menu {
+	background: #edde5d;
+}</string>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <widget class="QLabel" name="label_2">
       <property name="font">
        <font>
-        <family>Arial Black</family>
+        <family>Bahnschrift SemiBold</family>
         <pointsize>12</pointsize>
+        <weight>75</weight>
+        <italic>true</italic>
+        <bold>true</bold>
+        <underline>false</underline>
+        <strikeout>false</strikeout>
+        <kerning>false</kerning>
        </font>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>Bem-Vindo Weuberth</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+      <property name="margin">
+       <number>1</number>
+      </property>
+      <property name="indent">
+       <number>-1</number>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextEditable</set>
       </property>
      </widget>
     </item>
@@ -42,6 +71,14 @@
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="QFrame" name="frame">
+         <property name="styleSheet">
+          <string notr="true">#frame{
+border: 2px solid #F09819;
+background-color:#F09819;
+border-radius: 15px;
+}
+</string>
+         </property>
          <property name="frameShape">
           <enum>QFrame::NoFrame</enum>
          </property>
@@ -81,24 +118,80 @@
            </widget>
           </item>
           <item>
-           <widget class="Line" name="line">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QPushButton" name="BtnMenu">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>10</pointsize>
+              <italic>true</italic>
+             </font>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::StrongFocus</enum>
+            </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">QPushButton:focus{ background-color: #003973; border:1 solid; }
+
+.QPushButton{
+	background-color: #FF512F;
+	color: rgb(255, 255, 255);
+	border: 5px solid#FF512F;
+	border-radius: 15px;
+	height: 25px;
+	width: 75px;
+}
+
+.QPushButton:hover{
+	background-color: #003973;
+	border: 2px;
+	color: white;
+}
+
+</string>
             </property>
             <property name="text">
              <string>Cardápio</string>
+            </property>
+            <property name="checkable">
+             <bool>false</bool>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="BtnEmployees">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>10</pointsize>
+              <italic>true</italic>
+             </font>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::ClickFocus</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton:focus{ background-color: #003973; border:1 solid; }
+
+.QPushButton{
+	background-color: #FF512F;
+	color: rgb(255, 255, 255);
+	border: 5px solid#FF512F;
+	border-radius: 15px;
+	height: 25px;
+	width: 75px;
+}
+
+.QPushButton:hover{
+	background-color: #003973;
+	border: 2px;
+	color: white;
+}
+
+</string>
+            </property>
             <property name="text">
              <string>Gerenciar Funcionário</string>
             </property>
@@ -106,6 +199,33 @@
           </item>
           <item>
            <widget class="QPushButton" name="BtnDish">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>10</pointsize>
+              <italic>true</italic>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton:focus{ background-color: #003973; border:1 solid; }
+
+.QPushButton{
+	background-color: #FF512F;
+	color: rgb(255, 255, 255);
+	border: 5px solid#FF512F;
+	border-radius: 15px;
+	height: 25px;
+	width: 75px;
+}
+
+.QPushButton:hover{
+	background-color: #003973;
+	border: 2px;
+	color: white;
+}
+
+</string>
+            </property>
             <property name="text">
              <string>Gerenciar Plato</string>
             </property>
@@ -113,6 +233,33 @@
           </item>
           <item>
            <widget class="QPushButton" name="BtnSell">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>10</pointsize>
+              <italic>true</italic>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton:focus{ background-color: #003973; border:1 solid; }
+
+.QPushButton{
+	background-color: #FF512F;
+	color: rgb(255, 255, 255);
+	border: 5px solid#FF512F;
+	border-radius: 15px;
+	height: 25px;
+	width: 75px;
+}
+
+.QPushButton:hover{
+	background-color: #003973;
+	border: 2px;
+	color: white;
+}
+
+</string>
+            </property>
             <property name="text">
              <string>Vender</string>
             </property>
@@ -120,6 +267,31 @@
           </item>
           <item>
            <widget class="QPushButton" name="BtnProfile">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>10</pointsize>
+              <italic>true</italic>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton:focus{ background-color: #003973; border:1 solid; }
+
+.QPushButton{
+	background-color: #FF512F;
+	color: rgb(255, 255, 255);
+	border: 5px solid#FF512F;
+	border-radius: 15px;
+	height: 25px;
+	width: 75px;
+}
+
+.QPushButton:hover{
+	background-color: #003973;
+	border: 2px;
+	color: white;
+}</string>
+            </property>
             <property name="text">
              <string>Perfil</string>
             </property>
@@ -142,7 +314,20 @@
         </widget>
        </item>
        <item>
-        <widget class="QStackedWidget" name="StackedWidget"/>
+        <widget class="QStackedWidget" name="StackedWidget">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="contextMenuPolicy">
+          <enum>Qt::CustomContextMenu</enum>
+         </property>
+         <property name="acceptDrops">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

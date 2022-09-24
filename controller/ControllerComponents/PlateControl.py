@@ -42,7 +42,7 @@ class PlateControl(QWidget):
 
         if Line == -1:
             Alert = QMessageBox()
-            Alert.setIcon(QMessageBox.Icon.Information)
+            Alert.setIcon(QMessageBox.Icon.Warning)
             Alert.setWindowTitle("Alerta")
             Alert.setText("SELECIONE UMA LINHA NA TABELA PARA PEGAR OS DADOS!!")
             Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
@@ -58,12 +58,21 @@ class PlateControl(QWidget):
         Status = self.InputStatus.currentText()
 
         if Name == "" or Description == "" or Price == "" or Status == "":
-            self.AlertDish.setText(f"OBS: Preencha Todos Os Campos")
+            self.Alert.setText(f"Preencha Todos Os Campos")
         else:
             New = Dish(-1, Name, Description, Price, Status)
             Id = Dish_DAO.AddDAO(New)
             New.Id = Id
             self.AddTableWidget(New)
+
+            Alert = QMessageBox()
+            Alert.setIcon(QMessageBox.Icon.Information)
+            Alert.setWindowTitle("Alerta")
+            Alert.setText("CADASTRO REALIZADO COM SUCESSO!!")
+            Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+            x = Alert.exec()
+
+            self.ClearField()
 
     def DeleteDish(self):
         Line = self.Table.currentRow()
@@ -104,7 +113,7 @@ class PlateControl(QWidget):
 
         if Line == -1:
             Alert = QMessageBox()
-            Alert.setIcon(QMessageBox.Icon.Information)
+            Alert.setIcon(QMessageBox.Icon.Warning)
             Alert.setWindowTitle("Alerta")
             Alert.setText("SELECIONE UMA LINHA NA TABELA!!")
             Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
@@ -123,6 +132,15 @@ class PlateControl(QWidget):
                 Update = Dish(-1, Name, Description, Price, Status)
                 self.Edition(Update)
                 Dish_DAO.EditDAO(Update, int(Id))
+
+                Alert = QMessageBox()
+                Alert.setIcon(QMessageBox.Icon.Information)
+                Alert.setWindowTitle("Alerta")
+                Alert.setText("DADOS ATUALIZADOS COM REALIZADO COM SUCESSO!!")
+                Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+                x = Alert.exec()
+
+                self.ClearField()
 
     def Edition(self, w: Dish):
         Line = self.Table.currentRow()

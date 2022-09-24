@@ -17,7 +17,7 @@
    <item>
     <widget class="QFrame" name="frame">
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::NoFrame</enum>
      </property>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
@@ -26,7 +26,7 @@
       <item>
        <widget class="QFrame" name="frame_2">
         <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
+         <enum>QFrame::NoFrame</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
@@ -35,7 +35,16 @@
          <item>
           <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>icon</string>
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>../../assets/icons/icons8-funcionário-homem-64.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -56,12 +65,15 @@
           <widget class="QLabel" name="label">
            <property name="font">
             <font>
-             <family>Arial Black</family>
-             <pointsize>12</pointsize>
+             <family>Bahnschrift Light</family>
+             <pointsize>15</pointsize>
+             <weight>50</weight>
+             <italic>true</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">
-            <string>TextLabel</string>
+            <string>Gerenciamento De Funcionário</string>
            </property>
           </widget>
          </item>
@@ -103,7 +115,14 @@
              <property name="font">
               <font>
                <family>Arial</family>
+               <pointsize>10</pointsize>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border: 1.5px solid rgb(26, 95, 180);
+border-radius: 5px;
+padding: 3px;
+</string>
              </property>
             </widget>
            </item>
@@ -131,7 +150,14 @@
              <property name="font">
               <font>
                <family>Arial</family>
+               <pointsize>10</pointsize>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border: 1.5px solid rgb(26, 95, 180);
+border-radius: 5px;
+padding: 3px;
+</string>
              </property>
             </widget>
            </item>
@@ -153,7 +179,12 @@
              <property name="font">
               <font>
                <family>Arial</family>
+               <pointsize>10</pointsize>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">padding: 3px;
+</string>
              </property>
              <property name="maximum">
               <double>9999.989999999999782</double>
@@ -184,7 +215,12 @@
              <property name="font">
               <font>
                <family>Arial</family>
+               <pointsize>10</pointsize>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">padding: 3px;
+</string>
              </property>
              <item>
               <property name="text">
@@ -204,6 +240,31 @@
           <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
             <widget class="QPushButton" name="BtnGetData">
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>10</pointsize>
+               <italic>true</italic>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">.QPushButton{
+	background-color: #FF512F;
+	color: rgb(255, 255, 255);
+	border: 5px solid#FF512F;
+	border-radius: 15px;
+	height: 25px;
+	width: 75px;
+}
+
+.QPushButton:hover{
+	background-color: #003973;
+	border: 2px;
+	color: white;
+}
+
+</string>
+             </property>
              <property name="text">
               <string>Pegar Dados</string>
              </property>
@@ -211,6 +272,31 @@
            </item>
            <item>
             <widget class="QPushButton" name="BtnClean">
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>10</pointsize>
+               <italic>true</italic>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">.QPushButton{
+	background-color: #FF512F;
+	color: rgb(255, 255, 255);
+	border: 5px solid#FF512F;
+	border-radius: 15px;
+	height: 25px;
+	width: 80px;
+}
+
+.QPushButton:hover{
+	background-color: #003973;
+	border: 2px;
+	color: white;
+}
+
+</string>
+             </property>
              <property name="text">
               <string>Limpar Dados</string>
              </property>
@@ -239,7 +325,26 @@
               <font>
                <family>Arial</family>
                <pointsize>10</pointsize>
+               <italic>true</italic>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">.QPushButton{
+	background-color: #FF512F;
+	color: rgb(255, 255, 255);
+	border: 5px solid#FF512F;
+	border-radius: 15px;
+	height: 25px;
+	width: 75px;
+}
+
+.QPushButton:hover{
+	background-color: #003973;
+	border: 2px;
+	color: white;
+}
+
+</string>
              </property>
              <property name="text">
               <string>Adicionar</string>
@@ -252,7 +357,26 @@
               <font>
                <family>Arial</family>
                <pointsize>10</pointsize>
+               <italic>true</italic>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">.QPushButton{
+	background-color: #FF512F;
+	color: rgb(255, 255, 255);
+	border: 5px solid#FF512F;
+	border-radius: 15px;
+	height: 25px;
+	width: 75px;
+}
+
+.QPushButton:hover{
+	background-color: #003973;
+	border: 2px;
+	color: white;
+}
+
+</string>
              </property>
              <property name="text">
               <string>Editar</string>
@@ -265,7 +389,26 @@
               <font>
                <family>Arial</family>
                <pointsize>10</pointsize>
+               <italic>true</italic>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">.QPushButton{
+	background-color: #FF512F;
+	color: rgb(255, 255, 255);
+	border: 5px solid#FF512F;
+	border-radius: 15px;
+	height: 25px;
+	width: 75px;
+}
+
+.QPushButton:hover{
+	background-color: #003973;
+	border: 2px;
+	color: white;
+}
+
+</string>
              </property>
              <property name="text">
               <string>Apagar</string>
@@ -282,8 +425,12 @@
         <property name="font">
          <font>
           <family>Arial Black</family>
-          <pointsize>13</pointsize>
+          <pointsize>12</pointsize>
+          <italic>true</italic>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 0, 0);</string>
         </property>
         <property name="text">
          <string/>

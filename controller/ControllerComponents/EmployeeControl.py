@@ -69,6 +69,13 @@ class EmployeeControl(QWidget):
             New.Id = Id
             self.AddTableWidget(New)
 
+            Alert = QMessageBox()
+            Alert.setIcon(QMessageBox.Icon.Information)
+            Alert.setWindowTitle("Alerta")
+            Alert.setText("CADASTRO REALIZADO COM SUCESSO!!")
+            Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+            x = Alert.exec()
+
             self.ClearField()
 
     def DeleteEmployees(self):
@@ -110,7 +117,7 @@ class EmployeeControl(QWidget):
 
         if Line == -1:
             Alert = QMessageBox()
-            Alert.setIcon(QMessageBox.Icon.Information)
+            Alert.setIcon(QMessageBox.Icon.Warning)
             Alert.setWindowTitle("Alerta")
             Alert.setText("SELECIONE UMA LINHA NA TABELA!!")
             Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
@@ -130,6 +137,14 @@ class EmployeeControl(QWidget):
                 Update = Employees(-1, Name, Occupation, Remuneration, Status, DateTime)
                 self.Edition(Update)
                 Employees_DAO.EditDAO(Update, int(Id))
+
+                Alert = QMessageBox()
+                Alert.setIcon(QMessageBox.Icon.Information)
+                Alert.setWindowTitle("Alerta")
+                Alert.setText("DADOS ATUALIZADOS COM REALIZADO COM SUCESSO!!")
+                Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+                x = Alert.exec()
+
                 self.ClearField()
 
     def Edition(self, w: Employees):

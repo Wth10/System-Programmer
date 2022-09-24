@@ -4,6 +4,8 @@ from PyQt6 import uic
 from model.Menu.Menu import Menu
 from model.Menu.Menu_DAO import Menu_DAO
 
+from controller.ControllerComponents.MakeSaleControl import MakeSaleControl
+
 File_Qt = "view/components/Menu.ui"
 
 
@@ -18,8 +20,10 @@ class MenuControl(QWidget):
         )
 
         self.LoadData()
+        self.Alert()
 
     def LoadData(self):
+        self.Table.setRowCount(0)
         list = Menu_DAO.SpecificSelection()
         for x in list:
             self.AddTableWidget(x)

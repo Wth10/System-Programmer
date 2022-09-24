@@ -5,6 +5,7 @@ from controller.ControllerComponents.MenuControl import MenuControl
 from controller.ControllerComponents.EmployeeControl import EmployeeControl
 from controller.ControllerComponents.ProfileControl import ProfileControl
 from controller.ControllerComponents.PlateControl import PlateControl
+from controller.ControllerComponents.MakeSaleControl import MakeSaleControl
 
 File_Qt = "view/Dashboard.ui"
 
@@ -22,18 +23,21 @@ class MainWindow(QMainWindow):
         self.PageEmployeeControl = EmployeeControl()
         self.PageProfileControl = ProfileControl()
         self.PagePlateControl = PlateControl()
+        self.PageMakeSale = MakeSaleControl()
 
         # Insere as páginas
         self.StackedWidget.addWidget(self.PageMenuControl)
         self.StackedWidget.addWidget(self.PageEmployeeControl)
         self.StackedWidget.addWidget(self.PageProfileControl)
         self.StackedWidget.addWidget(self.PagePlateControl)
+        self.StackedWidget.addWidget(self.PageMakeSale)
 
         # Ações dos botões
         self.BtnMenu.clicked.connect(self.ActionMenu)
         self.BtnEmployees.clicked.connect(self.ActionMenu)
         self.BtnProfile.clicked.connect(self.ActionMenu)
         self.BtnDish.clicked.connect(self.ActionMenu)
+        self.BtnSell.clicked.connect(self.ActionMenu)
 
     def ActionMenu(self):
         Button = self.sender()
@@ -41,6 +45,7 @@ class MainWindow(QMainWindow):
 
         if ClickedButton == "BtnMenu":
             self.StackedWidget.setCurrentIndex(0)
+            self.PageMenuControl.LoadData()
 
         if ClickedButton == "BtnEmployees":
             self.StackedWidget.setCurrentIndex(1)
@@ -50,3 +55,6 @@ class MainWindow(QMainWindow):
 
         if ClickedButton == "BtnDish":
             self.StackedWidget.setCurrentIndex(3)
+
+        if ClickedButton == "BtnSell":
+            self.StackedWidget.setCurrentIndex(4)
