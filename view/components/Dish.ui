@@ -486,12 +486,17 @@ padding: 3px;
         </column>
         <column>
          <property name="text">
-          <string>Valor</string>
+          <string>Preço</string>
          </property>
         </column>
         <column>
          <property name="text">
           <string>Status</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Editado</string>
          </property>
         </column>
        </widget>

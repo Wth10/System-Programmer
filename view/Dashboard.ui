@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>640</width>
-    <height>480</height>
+    <height>481</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -266,16 +266,18 @@ border-radius: 15px;
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="BtnProfile">
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>10</pointsize>
-              <italic>true</italic>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton:focus{ background-color: #003973; border:1 solid; }
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QPushButton" name="BtnProfile">
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>10</pointsize>
+                <italic>true</italic>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton:focus{ background-color: #003973; border:1 solid; }
 
 .QPushButton{
 	background-color: #FF512F;
@@ -291,11 +293,45 @@ border-radius: 15px;
 	border: 2px;
 	color: white;
 }</string>
-            </property>
-            <property name="text">
-             <string>Perfil</string>
-            </property>
-           </widget>
+              </property>
+              <property name="text">
+               <string>Perfil</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton">
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>10</pointsize>
+                <italic>true</italic>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton:focus{ background-color: #003973; border:1 solid; }
+
+.QPushButton{
+	background-color: #FF512F;
+	color: rgb(255, 255, 255);
+	border: 5px solid#FF512F;
+	border-radius: 15px;
+	height: 25px;
+	width: 75px;
+}
+
+.QPushButton:hover{
+	background-color: #003973;
+	border: 2px;
+	color: white;
+}</string>
+              </property>
+              <property name="text">
+               <string>Estatísticas</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <spacer name="verticalSpacer">

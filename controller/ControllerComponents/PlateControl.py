@@ -35,7 +35,6 @@ class PlateControl(QWidget):
     def ClearField(self):
         self.InputName.clear()
         self.InputDescription.clear()
-        self.Alert.clear()
 
     def GetText(self):
         Line = self.Table.currentRow()
@@ -58,7 +57,12 @@ class PlateControl(QWidget):
         Status = self.InputStatus.currentText()
 
         if Name == "" or Description == "" or Price == "" or Status == "":
-            self.Alert.setText(f"Preencha Todos Os Campos")
+            Alert = QMessageBox()
+            Alert.setIcon(QMessageBox.Icon.Warning)
+            Alert.setWindowTitle("Alerta")
+            Alert.setText("PREENCHA TODOS OS CAMPOS !!")
+            Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+            x = Alert.exec()
         else:
             New = Dish(-1, Name, Description, Price, Status)
             Id = Dish_DAO.AddDAO(New)

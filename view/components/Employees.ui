@@ -442,6 +442,15 @@ padding: 3px;
       </item>
       <item>
        <widget class="QTableWidget" name="Table">
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="sizeAdjustPolicy">
+         <enum>QAbstractScrollArea::AdjustIgnored</enum>
+        </property>
         <property name="editTriggers">
          <set>QAbstractItemView::SelectedClicked</set>
         </property>
@@ -487,7 +496,7 @@ padding: 3px;
         </column>
         <column>
          <property name="text">
-          <string>Criado</string>
+          <string>Editado</string>
          </property>
         </column>
        </widget>

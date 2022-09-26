@@ -36,7 +36,6 @@ class EmployeeControl(QWidget):
     def ClearField(self):
         self.InputName.clear()
         self.InputOccupation.clear()
-        self.Alert.clear()
 
     def GetText(self):
         Line = self.Table.currentRow()
@@ -62,7 +61,12 @@ class EmployeeControl(QWidget):
         DateTime = f"{date.today()}  {Hour.hour}:{Hour.minute}"
 
         if Name == "" or Occupation == "" or Remuneration == "" or Status == "":
-            self.Alert.setText(f"Preencha Todos Os Campos")
+            Alert = QMessageBox()
+            Alert.setIcon(QMessageBox.Icon.Warning)
+            Alert.setWindowTitle("Alerta")
+            Alert.setText("PREENCHA TODOS OS CAMPOS !!")
+            Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+            x = Alert.exec()
         else:
             New = Employees(-1, Name, Occupation, Remuneration, Status, DateTime)
             Id = Employees_DAO.AddDAO(New)
@@ -130,7 +134,12 @@ class EmployeeControl(QWidget):
             DateTime = f"{date.today()}  {Hour.hour}:{Hour.minute}"
 
             if Name == "" or Occupation == "" or Remuneration == "" or Status == "":
-                self.Alert.setText(f"Preencha Todos Os Campos")
+                Alert = QMessageBox()
+                Alert.setIcon(QMessageBox.Icon.Information)
+                Alert.setWindowTitle("Alerta")
+                Alert.setText("PREENCHA TODOS OS CAMPOS !!")
+                Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+                x = Alert.exec()
             else:
                 LineId = self.Table.item(Line, 0)
                 Id = LineId.text()
@@ -148,22 +157,26 @@ class EmployeeControl(QWidget):
                 self.ClearField()
 
     def Edition(self, w: Employees):
+        Hour = datetime.now()
         Line = self.Table.currentRow()
 
         Name = self.InputName.text()
         Occupation = self.InputOccupation.text()
         Remuneration = self.InputRemuneration.text()
         Status = self.InputStatus.currentText()
+        DateTime = f"{date.today()}  {Hour.hour}:{Hour.minute}"
 
         Name = QTableWidgetItem(w.Name)
         Occupation = QTableWidgetItem(w.Occupation)
         Remuneration = QTableWidgetItem(f"R$ {w.Remuneration}")
         Status = QTableWidgetItem(w.Status)
+        DateTime = QTableWidgetItem(w.Created_at)
 
         self.Table.setItem(Line, 1, Name)
         self.Table.setItem(Line, 2, Occupation)
         self.Table.setItem(Line, 3, Remuneration)
         self.Table.setItem(Line, 4, Status)
+        self.Table.setItem(Line, 5, DateTime)
 
     def AddTableWidget(self, w: Employees):
         Line = self.Table.rowCount()
