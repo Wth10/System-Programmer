@@ -95,6 +95,9 @@
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <layout class="QFormLayout" name="formLayout">
+           <property name="fieldGrowthPolicy">
+            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+           </property>
            <item row="0" column="0">
             <widget class="QLabel" name="nomeLabel">
              <property name="font">
@@ -112,7 +115,7 @@
             <widget class="QLineEdit" name="InputName">
              <property name="maximumSize">
               <size>
-               <width>450</width>
+               <width>550</width>
                <height>16777215</height>
               </size>
              </property>
@@ -120,6 +123,12 @@
               <font>
                <family>Arial</family>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border: 1.5px solid rgb(26, 95, 180);
+border-radius: 5px;
+padding: 3px;
+</string>
              </property>
             </widget>
            </item>
@@ -140,7 +149,7 @@
             <widget class="QLineEdit" name="InputPrice">
              <property name="maximumSize">
               <size>
-               <width>450</width>
+               <width>550</width>
                <height>16777215</height>
               </size>
              </property>
@@ -148,6 +157,12 @@
               <font>
                <family>Arial</family>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border: 1.5px solid rgb(26, 95, 180);
+border-radius: 5px;
+padding: 3px;
+</string>
              </property>
             </widget>
            </item>
@@ -168,7 +183,7 @@
             <widget class="QLineEdit" name="InputObservation">
              <property name="maximumSize">
               <size>
-               <width>450</width>
+               <width>550</width>
                <height>16777215</height>
               </size>
              </property>
@@ -176,6 +191,12 @@
               <font>
                <family>Arial</family>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border: 1.5px solid rgb(26, 95, 180);
+border-radius: 5px;
+padding: 3px;
+</string>
              </property>
             </widget>
            </item>

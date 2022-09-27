@@ -13,9 +13,17 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#Form {
+	background: #edde5d;
+}</string>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QFrame" name="frame">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
      </property>
@@ -25,6 +33,14 @@
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QFrame" name="frame_2">
+        <property name="styleSheet">
+         <string notr="true">#frame_2{
+border: 2px solid #F09819;
+background-color:#F09819;
+border-radius: 15px;
+}
+</string>
+        </property>
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
@@ -67,14 +83,34 @@
           </widget>
          </item>
          <item>
-          <widget class="Line" name="line">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QPushButton" name="BtnLogin">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>10</pointsize>
+             <italic>true</italic>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton:focus{ background-color: #003973; border:1 solid; }
+
+.QPushButton{
+	background-color: #FF512F;
+	color: rgb(255, 255, 255);
+	border: 5px solid#FF512F;
+	border-radius: 15px;
+	height: 25px;
+	width: 75px;
+}
+
+.QPushButton:hover{
+	background-color: #003973;
+	border: 2px;
+	color: white;
+}
+
+</string>
+           </property>
            <property name="text">
             <string>Login</string>
            </property>
@@ -82,6 +118,33 @@
          </item>
          <item>
           <widget class="QPushButton" name="BtnCadastro">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>10</pointsize>
+             <italic>true</italic>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton:focus{ background-color: #003973; border:1 solid; }
+
+.QPushButton{
+	background-color: #FF512F;
+	color: rgb(255, 255, 255);
+	border: 5px solid#FF512F;
+	border-radius: 15px;
+	height: 25px;
+	width: 75px;
+}
+
+.QPushButton:hover{
+	background-color: #003973;
+	border: 2px;
+	color: white;
+}
+
+</string>
+           </property>
            <property name="text">
             <string>Cadastrar-se</string>
            </property>
