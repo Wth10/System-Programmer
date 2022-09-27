@@ -227,7 +227,7 @@ border-radius: 15px;
 </string>
             </property>
             <property name="text">
-             <string>Gerenciar Plato</string>
+             <string>Gerenciar Cardápio</string>
             </property>
            </widget>
           </item>

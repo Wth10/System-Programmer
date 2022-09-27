@@ -4,6 +4,9 @@ from PyQt6 import uic
 from model.Dish.Dish import Dish
 from model.Dish.Dish_DAO import Dish_DAO
 
+from datetime import datetime
+from datetime import date
+
 File_Qt = "view/components/Dish.ui"
 
 
@@ -51,10 +54,13 @@ class PlateControl(QWidget):
             self.InputDescription.setText(self.Table.item(Line, 2).text())
 
     def RegisterDish(self):
+        Hour = datetime.now()
+
         Name = self.InputName.text()
         Description = self.InputDescription.text()
         Price = self.InputPrice.text()
         Status = self.InputStatus.currentText()
+        Created_at = f"{date.today()}  {Hour.hour}:{Hour.minute}"
 
         if Name == "" or Description == "" or Price == "" or Status == "":
             Alert = QMessageBox()
@@ -64,7 +70,7 @@ class PlateControl(QWidget):
             Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
             x = Alert.exec()
         else:
-            New = Dish(-1, Name, Description, Price, Status)
+            New = Dish(-1, Name, Description, Price, Status, Created_at)
             Id = Dish_DAO.AddDAO(New)
             New.Id = Id
             self.AddTableWidget(New)
@@ -113,6 +119,7 @@ class PlateControl(QWidget):
                 x = Alert.close()
 
     def EditDish(self):
+        Hour = datetime.now()
         Line = self.Table.currentRow()
 
         if Line == -1:
@@ -127,13 +134,14 @@ class PlateControl(QWidget):
             Description = self.InputDescription.text()
             Price = self.InputPrice.text()
             Status = self.InputStatus.currentText()
+            Created_at = f"{date.today()}  {Hour.hour}:{Hour.minute}"
 
             if Name == "" or Description == "" or Price == "" or Status == "":
                 self.Alert.setText(f"Preencha Todos Os Campos")
             else:
                 LineId = self.Table.item(Line, 0)
                 Id = LineId.text()
-                Update = Dish(-1, Name, Description, Price, Status)
+                Update = Dish(-1, Name, Description, Price, Status, Created_at)
                 self.Edition(Update)
                 Dish_DAO.EditDAO(Update, int(Id))
 
@@ -147,22 +155,27 @@ class PlateControl(QWidget):
                 self.ClearField()
 
     def Edition(self, w: Dish):
+        Hour = datetime.now()
+
         Line = self.Table.currentRow()
 
         Name = self.InputName.text()
         Description = self.InputDescription.text()
         Price = self.InputPrice.text()
         Status = self.InputStatus.currentText()
+        Created_at = f"{date.today()}  {Hour.hour}:{Hour.minute}"
 
         Name = QTableWidgetItem(w.Name)
         Description = QTableWidgetItem(w.Description)
         Price = QTableWidgetItem(f"R$ {w.Price}")
         Status = QTableWidgetItem(w.Status)
+        Created_at = QTableWidgetItem(w.Created_at)
 
         self.Table.setItem(Line, 1, Name)
         self.Table.setItem(Line, 2, Description)
         self.Table.setItem(Line, 3, Price)
         self.Table.setItem(Line, 4, Status)
+        self.Table.setItem(Line, 5, Created_at)
 
     def AddTableWidget(self, w: Dish):
         Line = self.Table.rowCount()
@@ -173,9 +186,11 @@ class PlateControl(QWidget):
         Description = QTableWidgetItem(w.Description)
         Price = QTableWidgetItem(f"R$ {w.Price}")
         Status = QTableWidgetItem(w.Status)
+        Created_at = QTableWidgetItem(w.Created_at)
 
         self.Table.setItem(Line, 0, Id)
         self.Table.setItem(Line, 1, Name)
         self.Table.setItem(Line, 2, Description)
         self.Table.setItem(Line, 3, Price)
         self.Table.setItem(Line, 4, Status)
+        self.Table.setItem(Line, 5, Created_at)

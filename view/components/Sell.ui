@@ -165,7 +165,7 @@
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QLineEdit" name="InputDescription">
+            <widget class="QLineEdit" name="InputObservation">
              <property name="maximumSize">
               <size>
                <width>450</width>
@@ -193,7 +193,7 @@
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QComboBox" name="formaDePagamentoComboBox">
+            <widget class="QComboBox" name="InputPaymentMethod">
              <property name="font">
               <font>
                <family>Arial</family>
@@ -349,7 +349,7 @@
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <property name="leftMargin">
-          <number>200</number>
+          <number>0</number>
          </property>
          <property name="topMargin">
           <number>0</number>
@@ -360,6 +360,51 @@
          <property name="bottomMargin">
           <number>0</number>
          </property>
+         <item>
+          <widget class="QPushButton" name="BtnGetDish">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>10</pointsize>
+             <italic>true</italic>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">.QPushButton{
+	background-color: #FF512F;
+	color: rgb(255, 255, 255);
+	border: 5px solid#FF512F;
+	border-radius: 15px;
+	height: 25px;
+	width: 75px;
+}
+
+.QPushButton:hover{
+	background-color: #003973;
+	border: 2px;
+	color: white;
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>Pegar Dados</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
          <item>
           <widget class="QPushButton" name="BtnClean">
            <property name="font">
@@ -393,7 +438,20 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="BtnGetData">
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="BtnGetMakeSale">
            <property name="font">
             <font>
              <family>Arial</family>
@@ -424,19 +482,6 @@
            </property>
           </widget>
          </item>
-         <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
         </layout>
        </widget>
       </item>
@@ -461,6 +506,12 @@
             <set>QAbstractItemView::NoEditTriggers</set>
            </property>
            <property name="tabKeyNavigation">
+            <bool>false</bool>
+           </property>
+           <property name="showDropIndicator" stdset="0">
+            <bool>false</bool>
+           </property>
+           <property name="dragDropOverwriteMode">
             <bool>false</bool>
            </property>
            <property name="selectionBehavior">
@@ -491,6 +542,21 @@
          </item>
          <item>
           <widget class="QTableWidget" name="SalesTable">
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+           <property name="tabKeyNavigation">
+            <bool>false</bool>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectRows</enum>
+           </property>
+           <property name="showGrid">
+            <bool>false</bool>
+           </property>
+           <property name="gridStyle">
+            <enum>Qt::DashLine</enum>
+           </property>
            <column>
             <property name="text">
              <string>Id</string>
