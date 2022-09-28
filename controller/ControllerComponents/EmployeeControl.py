@@ -6,6 +6,8 @@ from model.Employees.Employees_DAO import Employees_DAO
 
 from datetime import datetime
 from datetime import date
+import pandas as PD
+import sqlite3
 
 File_Qt = "view/components/Employees.ui"
 
@@ -24,6 +26,7 @@ class EmployeeControl(QWidget):
         self.BtnAdd.clicked.connect(self.RegisterEmployees)
         self.BtnEdit.clicked.connect(self.EditEmployees)
         self.BtnDelete.clicked.connect(self.DeleteEmployees)
+        self.GenerateExcel.clicked.connect(self.Excel)
 
         self.BtnGetData.clicked.connect(self.GetText)
         self.BtnClean.clicked.connect(self.ClearField)
@@ -50,6 +53,20 @@ class EmployeeControl(QWidget):
         else:
             self.InputName.setText(self.Table.item(Line, 1).text())
             self.InputOccupation.setText(self.Table.item(Line, 2).text())
+
+    def Excel(self):
+        connect = sqlite3.connect("./database/Restaurant.db")
+        W = PD.read_sql_query("SELECT * FROM Employees ORDER BY Status ASC;", connect)
+        W.to_excel(
+            "./DocsExcel/Lista_Funcionários.xls", sheet_name="Funcionários", index=False
+        )
+
+        Alert = QMessageBox()
+        Alert.setIcon(QMessageBox.Icon.Information)
+        Alert.setWindowTitle("Alerta")
+        Alert.setText("PLANILHA CRIADA COM SUCESSO, ESTA NA PASTA 'DocsExcel' !!")
+        Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+        x = Alert.exec()
 
     def RegisterEmployees(self):
         Hour = datetime.now()

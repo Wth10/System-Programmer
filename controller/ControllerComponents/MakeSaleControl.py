@@ -8,6 +8,8 @@ from model.Sales.Sales_DAO import Sales_DAO
 
 from datetime import datetime
 from datetime import date
+import pandas as PD
+import sqlite3
 
 
 class MakeSaleControl(QWidget):
@@ -28,6 +30,7 @@ class MakeSaleControl(QWidget):
         self.BtnGetDish.clicked.connect(self.GetTextDish)
         self.BtnGetMakeSale.clicked.connect(self.GetTextMakeSale)
         self.BtnClean.clicked.connect(self.ClearField)
+        self.GenerateExcel.clicked.connect(self.Excel)
 
         self.BtnAdd.clicked.connect(self.RegisterMakeSale)
         self.BtnEdit.clicked.connect(self.EditMakeSale)
@@ -40,6 +43,51 @@ class MakeSaleControl(QWidget):
         self.InputName.clear()
         self.InputPrice.clear()
         self.InputObservation.clear()
+
+    def GetTextDish(self):
+        LineDish = self.DishTable.currentRow()
+
+        if LineDish == -1:
+            Alert = QMessageBox()
+            Alert.setIcon(QMessageBox.Icon.Warning)
+            Alert.setWindowTitle("Alerta")
+            Alert.setText(
+                "SELECIONE UMA LINHA NA TABELA DO CARDÁPIO PARA PEGAR OS DADOS!!"
+            )
+            Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+            x = Alert.exec()
+        else:
+            self.InputName.setText(self.DishTable.item(LineDish, 1).text())
+            self.InputPrice.setText(self.DishTable.item(LineDish, 2).text())
+
+    def GetTextMakeSale(self):
+        LineSale = self.SalesTable.currentRow()
+
+        if LineSale == -1:
+            Alert = QMessageBox()
+            Alert.setIcon(QMessageBox.Icon.Warning)
+            Alert.setWindowTitle("Alerta")
+            Alert.setText(
+                "SELECIONE UMA LINHA NA TABELA DE VENDAS PARA PEGAR OS DADOS!!"
+            )
+            Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+            x = Alert.exec()
+        else:
+            self.InputName.setText(self.SalesTable.item(LineSale, 1).text())
+            self.InputPrice.setText(self.SalesTable.item(LineSale, 2).text())
+            self.InputObservation.setText(self.SalesTable.item(LineSale, 3).text())
+
+    def Excel(self):
+        connect = sqlite3.connect("./database/Restaurant.db")
+        W = PD.read_sql_query("SELECT * FROM MakeSale", connect)
+        W.to_excel("./DocsExcel/Lista_Vendas.xls", sheet_name="Vendas", index=False)
+
+        Alert = QMessageBox()
+        Alert.setIcon(QMessageBox.Icon.Information)
+        Alert.setWindowTitle("Alerta")
+        Alert.setText("PLANILHA CRIADA COM SUCESSO, ESTA NA PASTA 'DocsExcel' !!")
+        Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+        x = Alert.exec()
 
     def RegisterMakeSale(self):
         Hour = datetime.now()
@@ -162,39 +210,6 @@ class MakeSaleControl(QWidget):
                 Sales_DAO.DeleteDAO(int(Id))
             if x == 4194304:
                 x = Alert.close()
-
-    def GetTextMakeSale(self):
-        LineSale = self.SalesTable.currentRow()
-
-        if LineSale == -1:
-            Alert = QMessageBox()
-            Alert.setIcon(QMessageBox.Icon.Warning)
-            Alert.setWindowTitle("Alerta")
-            Alert.setText(
-                "SELECIONE UMA LINHA NA TABELA DE VENDAS PARA PEGAR OS DADOS!!"
-            )
-            Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
-            x = Alert.exec()
-        else:
-            self.InputName.setText(self.SalesTable.item(LineSale, 1).text())
-            self.InputPrice.setText(self.SalesTable.item(LineSale, 2).text())
-            self.InputObservation.setText(self.SalesTable.item(LineSale, 3).text())
-
-    def GetTextDish(self):
-        LineDish = self.DishTable.currentRow()
-
-        if LineDish == -1:
-            Alert = QMessageBox()
-            Alert.setIcon(QMessageBox.Icon.Warning)
-            Alert.setWindowTitle("Alerta")
-            Alert.setText(
-                "SELECIONE UMA LINHA NA TABELA DO CARDÁPIO PARA PEGAR OS DADOS!!"
-            )
-            Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
-            x = Alert.exec()
-        else:
-            self.InputName.setText(self.DishTable.item(LineDish, 1).text())
-            self.InputPrice.setText(self.DishTable.item(LineDish, 2).text())
 
     def LoadTableMakeSale(self):
         MakeSale_List = Sales_DAO.SelecMakeSale()

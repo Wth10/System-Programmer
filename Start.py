@@ -6,7 +6,7 @@ import sys
 App = QApplication(sys.argv)
 App.setStyle("Fusion")
 
-x = 1
+x = 0
 if x == 1:
     c = MainLogin()
     c.show()

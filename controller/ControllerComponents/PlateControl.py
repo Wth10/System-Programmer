@@ -6,6 +6,8 @@ from model.Dish.Dish_DAO import Dish_DAO
 
 from datetime import datetime
 from datetime import date
+import pandas as PD
+import sqlite3
 
 File_Qt = "view/components/Dish.ui"
 
@@ -21,11 +23,11 @@ class PlateControl(QWidget):
         )
 
         self.LoadData()
-        # self.Table.cellClicked.connect(self.GetText)
 
         self.BtnAdd.clicked.connect(self.RegisterDish)
         self.BtnEdit.clicked.connect(self.EditDish)
         self.BtnDelete.clicked.connect(self.DeleteDish)
+        self.GenerateExcel.clicked.connect(self.Excel)
 
         self.BtnGetData.clicked.connect(self.GetText)
         self.BtnClean.clicked.connect(self.ClearField)
@@ -52,6 +54,18 @@ class PlateControl(QWidget):
         else:
             self.InputName.setText(self.Table.item(Line, 1).text())
             self.InputDescription.setText(self.Table.item(Line, 2).text())
+
+    def Excel(self):
+        connect = sqlite3.connect("./database/Restaurant.db")
+        W = PD.read_sql_query("SELECT * FROM Dish ORDER BY Status ASC;", connect)
+        W.to_excel("./DocsExcel/Lista_Cadastrado.xls", sheet_name="Platos", index=False)
+
+        Alert = QMessageBox()
+        Alert.setIcon(QMessageBox.Icon.Information)
+        Alert.setWindowTitle("Alerta")
+        Alert.setText("PLANILHA CRIADA COM SUCESSO, ESTÁ NA PASTA 'DocsExcel' !!")
+        Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+        x = Alert.exec()
 
     def RegisterDish(self):
         Hour = datetime.now()
