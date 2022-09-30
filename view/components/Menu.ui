@@ -22,7 +22,7 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_4">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QFrame" name="frame_2">
         <property name="frameShape">
@@ -70,7 +70,9 @@
             <font>
              <family>Bahnschrift Light</family>
              <pointsize>15</pointsize>
+             <weight>50</weight>
              <italic>true</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">
@@ -102,13 +104,14 @@
            <widget class="QLabel" name="AlertMenu">
             <property name="font">
              <font>
-              <family>Arial Black</family>
-              <pointsize>12</pointsize>
+              <family>Bahnschrift Condensed</family>
+              <pointsize>19</pointsize>
               <italic>true</italic>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(255, 0, 0);</string>
+             <string notr="true">color: rgb(0, 0, 0);
+padding: 5px;</string>
             </property>
             <property name="text">
              <string/>
@@ -136,40 +139,87 @@
        </layout>
       </item>
       <item>
-       <widget class="QTableWidget" name="Table">
-        <property name="editTriggers">
-         <set>QAbstractItemView::DoubleClicked</set>
+       <widget class="QFrame" name="frame_3">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
         </property>
-        <property name="tabKeyNavigation">
-         <bool>false</bool>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
         </property>
-        <property name="showDropIndicator" stdset="0">
-         <bool>true</bool>
-        </property>
-        <property name="selectionBehavior">
-         <enum>QAbstractItemView::SelectRows</enum>
-        </property>
-        <property name="showGrid">
-         <bool>false</bool>
-        </property>
-        <property name="gridStyle">
-         <enum>Qt::DashLine</enum>
-        </property>
-        <column>
-         <property name="text">
-          <string>Nome</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Descrição</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Valor</string>
-         </property>
-        </column>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QFrame" name="frame_4">
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QPushButton" name="Update">
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>10</pointsize>
+                <italic>true</italic>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">.QPushButton{
+	background-color: #FF512F;
+	color: rgb(255, 255, 255);
+	border: 5px solid#FF512F;
+	border-radius: 15px;
+	height: 25px;
+	width: 75px;
+}
+
+.QPushButton:hover{
+	background-color: #003973;
+	border: 2px;
+	color: white;
+}
+
+</string>
+              </property>
+              <property name="text">
+               <string>Atualizar Cardápio</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QScrollArea" name="scrollArea">
+              <property name="styleSheet">
+               <string notr="true">background: #edde5d;</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <widget class="QWidget" name="scrollAreaWidgetContents">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>548</width>
+                 <height>137</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <item>
+                 <layout class="QVBoxLayout" name="CardConteiner"/>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>

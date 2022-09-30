@@ -4,7 +4,6 @@ from PyQt6 import uic
 from controller.ControllerLayout.LoginControl import LoginControl
 from controller.ControllerLayout.RegistrationControl import RegistrationControl
 
-
 File_Qt = "view/Home.ui"
 
 
@@ -14,7 +13,6 @@ class MainLogin(QWidget):
         uic.loadUi(File_Qt, self)
 
         self.setWindowTitle("ESPETO DE BOI")
-        self.showMaximized()
 
         self.PageLogin = LoginControl()
         self.PageRegistration = RegistrationControl()

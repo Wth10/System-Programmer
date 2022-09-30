@@ -21,46 +21,6 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <widget class="QLabel" name="label_2">
-      <property name="font">
-       <font>
-        <family>Bahnschrift SemiBold</family>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <italic>true</italic>
-        <bold>true</bold>
-        <underline>false</underline>
-        <strikeout>false</strikeout>
-        <kerning>false</kerning>
-       </font>
-      </property>
-      <property name="text">
-       <string>Bem-Vindo Weuberth</string>
-      </property>
-      <property name="textFormat">
-       <enum>Qt::AutoText</enum>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
-      </property>
-      <property name="margin">
-       <number>1</number>
-      </property>
-      <property name="indent">
-       <number>-1</number>
-      </property>
-      <property name="textInteractionFlags">
-       <set>Qt::TextEditable</set>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QFrame" name="frame_3">
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
@@ -300,7 +260,7 @@ border-radius: 15px;
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QPushButton" name="BtnExit">
               <property name="font">
                <font>
                 <family>Arial</family>
@@ -327,7 +287,7 @@ border-radius: 15px;
 }</string>
               </property>
               <property name="text">
-               <string>Estatísticas</string>
+               <string>Sair</string>
               </property>
              </widget>
             </item>

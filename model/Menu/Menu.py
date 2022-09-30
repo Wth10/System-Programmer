@@ -3,3 +3,6 @@ class Menu:
         self.Name = Name
         self.Description = Description
         self.Price = Price
+
+    def getName(self):
+        return self.Name

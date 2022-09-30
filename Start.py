@@ -1,17 +1,12 @@
 from PyQt6.QtWidgets import QApplication
-from controller.MainWindow import MainWindow
 from controller.MainLogin import MainLogin
+from controller.MainWindow import MainWindow
 import sys
 
 App = QApplication(sys.argv)
 App.setStyle("Fusion")
 
-x = 0
-if x == 1:
-    c = MainLogin()
-    c.show()
-else:
-    janela = MainWindow()
-    janela.show()
+W = MainWindow()
+W.show()
 
 App.exec()

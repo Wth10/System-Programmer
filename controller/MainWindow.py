@@ -14,9 +14,9 @@ class MainWindow(QMainWindow):
     def __init__(self) -> None:
         super(MainWindow, self).__init__()
         uic.loadUi(File_Qt, self)
+        self.showMaximized()
 
         self.setWindowTitle("ESPETO DE BOI")
-        self.showMaximized()
 
         # Cria os objetos das páginas
         self.PageMenuControl = MenuControl()
@@ -38,6 +38,7 @@ class MainWindow(QMainWindow):
         self.BtnProfile.clicked.connect(self.ActionMenu)
         self.BtnDish.clicked.connect(self.ActionMenu)
         self.BtnSell.clicked.connect(self.ActionMenu)
+        self.BtnExit.clicked.connect(self.ActionMenu)
 
     def ActionMenu(self):
         Button = self.sender()
@@ -45,7 +46,7 @@ class MainWindow(QMainWindow):
 
         if ClickedButton == "BtnMenu":
             self.StackedWidget.setCurrentIndex(0)
-            self.PageMenuControl.LoadData()
+            self.PageMenuControl.Alert()
 
         if ClickedButton == "BtnEmployees":
             self.StackedWidget.setCurrentIndex(1)
@@ -58,3 +59,6 @@ class MainWindow(QMainWindow):
 
         if ClickedButton == "BtnSell":
             self.StackedWidget.setCurrentIndex(4)
+
+        if ClickedButton == "BtnExit":
+            self.close()

@@ -29,3 +29,42 @@ class Menu_DAO:
         connect.close()
 
         return Menu_List
+
+    def getName():
+        connect = DB()
+        cursor = connect.cursor()
+        SQL = "SELECT Name FROM Dish WHERE Status = 'Ativo';"
+        cursor.execute(SQL)
+
+        x = cursor.fetchall()
+
+        connect = DB()
+        cursor = connect.cursor()
+
+        return x
+
+    def getPrice():
+        connect = DB()
+        cursor = connect.cursor()
+        SQL = "SELECT Price FROM Dish WHERE Status = 'Ativo';"
+        cursor.execute(SQL)
+
+        x = cursor.fetchall()
+
+        connect = DB()
+        cursor = connect.cursor()
+
+        return x
+
+    def getDescription():
+        connect = DB()
+        cursor = connect.cursor()
+        SQL = "SELECT Description FROM Dish WHERE Status = 'Ativo';"
+        cursor.execute(SQL)
+
+        x = cursor.fetchall()
+
+        connect = DB()
+        cursor = connect.cursor()
+
+        return x

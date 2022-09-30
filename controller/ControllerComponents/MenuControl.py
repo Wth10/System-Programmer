@@ -4,9 +4,10 @@ from PyQt6 import uic
 from model.Menu.Menu import Menu
 from model.Menu.Menu_DAO import Menu_DAO
 
-from controller.ControllerComponents.MakeSaleControl import MakeSaleControl
+from controller.ControllerComponents.Card import Card
 
 File_Qt = "view/components/Menu.ui"
+from random import randint
 
 
 class MenuControl(QWidget):
@@ -14,34 +15,36 @@ class MenuControl(QWidget):
         super(MenuControl, self).__init__()
         uic.loadUi(File_Qt, self)
 
-        self.Table.horizontalHeader().setStretchLastSection(True)
-        self.Table.horizontalHeader().setSectionResizeMode(
-            QHeaderView.ResizeMode.Stretch
-        )
-
-        self.LoadData()
         self.Alert()
-
-    def LoadData(self):
-        self.Table.setRowCount(0)
-        list = Menu_DAO.SpecificSelection()
-        for x in list:
-            self.AddTableWidget(x)
+        self.Update.clicked.connect(self.UpdatePage)
 
     def Alert(self):
         PlateCount = Menu_DAO.PlateCount()
 
         if PlateCount == 0:
+            self.AlertMenu.clear()
             self.AlertMenu.setText(f"Nenhum Prato Cadastrado!!")
+        else:
+            self.AlertMenu.clear()
+            self.AlertMenu.setText(f"Nº {PlateCount} Platos Cadastrado")
 
-    def AddTableWidget(self, w: Menu):
-        Line = self.Table.rowCount()
-        self.Table.insertRow(Line)
+    def UpdatePage(self, w: Menu):
+        self.ClearCard()
 
-        Name = QTableWidgetItem(w.Name)
-        Description = QTableWidgetItem(w.Description)
-        Price = QTableWidgetItem(f"R$ {w.Price}")
+        Name = Menu_DAO.getName()
+        Price = Menu_DAO.getPrice()
+        Description = Menu_DAO.getDescription()
+        for x in range(0, len(Name)):
+            w = Menu(
+                f"{Name[x][0]}",
+                f"Preço: R$ {Price[x][0]}",
+                f"Descrição: {Description[x][0]}",
+            )
 
-        self.Table.setItem(Line, 0, Name)
-        self.Table.setItem(Line, 1, Description)
-        self.Table.setItem(Line, 2, Price)
+            CardX = Card(w)
+            self.CardConteiner.addWidget(CardX)
+
+    def ClearCard(self):
+        for x in range(self.CardConteiner.count()):
+            CardX = self.CardConteiner.itemAt(x).widget()
+            CardX.hide()
