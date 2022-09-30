@@ -14,22 +14,6 @@ class Menu_DAO:
         connect.close()
         return x
 
-    def SpecificSelection():
-        Menu_List = []
-
-        connect = DB()
-        cursor = connect.cursor()
-        SQL = "SELECT Name, Description, Price FROM Dish WHERE Status = 'Ativo';"
-        cursor.execute(SQL)
-
-        list = cursor.fetchall()
-        for x in list:
-            w = Menu(x[0], x[1], x[2])
-            Menu_List.append(w)
-        connect.close()
-
-        return Menu_List
-
     def getName():
         connect = DB()
         cursor = connect.cursor()

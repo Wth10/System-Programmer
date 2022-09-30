@@ -59,6 +59,7 @@ class MainWindow(QMainWindow):
 
         if ClickedButton == "BtnSell":
             self.StackedWidget.setCurrentIndex(4)
+            self.PageMakeSale.LoadTableDish()
 
         if ClickedButton == "BtnExit":
             self.close()

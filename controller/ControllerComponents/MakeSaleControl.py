@@ -235,6 +235,7 @@ class MakeSaleControl(QWidget):
         self.SalesTable.setItem(Line, 5, Created_at)
 
     def LoadTableDish(self):
+        self.DishTable.setRowCount(0)
         list_dish = Sales_DAO.SelectDish()
         for x in list_dish:
             self.AddTableDish(x)
