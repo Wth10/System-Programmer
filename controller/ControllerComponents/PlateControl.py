@@ -151,7 +151,12 @@ class PlateControl(QWidget):
             Created_at = f"{date.today()}  {Hour.hour}:{Hour.minute}"
 
             if Name == "" or Description == "" or Price == "" or Status == "":
-                self.Alert.setText(f"Preencha Todos Os Campos")
+                Alert = QMessageBox()
+                Alert.setIcon(QMessageBox.Icon.Warning)
+                Alert.setWindowTitle("Alerta")
+                Alert.setText("PREENCHA TODOS OS CAMPOS !!")
+                Alert.setStandardButtons(QMessageBox.StandardButton.Ok)
+                x = Alert.exec()
             else:
                 LineId = self.Table.item(Line, 0)
                 Id = LineId.text()
